@@ -1,1 +1,1 @@
-ln -sf .tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/.tmux.conf ~/

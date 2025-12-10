@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Name of the tmux session
-SESSION_NAME="app"
+SESSION_NAME="k8s"
 
 # Check if the session already exists
 tmux has-session -t $SESSION_NAME 2>/dev/null
@@ -11,19 +11,13 @@ if [ $? != 0 ]; then
   # Create a new session with a window called 'nvim'
   tmux new-session -s $SESSION_NAME -n nvim -d
 
-  BACKEND_PATH="$HOME/workplace/gitrepo/keyspace-api"
+  REPO_PATH="$HOME/workplace/gitrepo/keyspace-k8s"
 
   # Start nvim in the first window (now index 1)
-  tmux send-keys -t $SESSION_NAME:0 "cd ${BACKEND_PATH} && nvim ." C-m
-
-  # Create a second window for terminal/command line (will be index 2)
-  tmux new-window -n terminal -t $SESSION_NAME
-
-  # Navigate to your backend directory and start server
-  tmux send-keys -t $SESSION_NAME:1 "cd ${BACKEND_PATH}" C-m
+  tmux send-keys -t $SESSION_NAME:1 "cd ${REPO_PATH} && nvim ." C-m
 
   # Select the first window (now index 1)
-  tmux select-window -t $SESSION_NAME:0
+  tmux select-window -t $SESSION_NAME:1
 fi
 
 # Attach to the session
