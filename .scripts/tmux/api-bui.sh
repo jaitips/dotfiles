@@ -1,25 +1,25 @@
 #!/bin/bash
-SESSION_NAME="dev-edge"
+SESSION_NAME="api-bui"
 
 tmux has-session -t $SESSION_NAME 2>/dev/null
 
 if [ $? != 0 ]; then
   API_PATH="$HOME/workplace/gitrepo/keyspace-api"
-  EDGE_PATH="$HOME/workplace/gitrepo/keyspace-edge"
+  BUI_PATH="$HOME/workplace/gitrepo/KeyspaceBackendUI/"
 
   # Window 1: nvim cloud
   tmux new-session -s $SESSION_NAME -n api-code -d
   tmux send-keys -t $SESSION_NAME:1 "cd ${API_PATH} && nvim ." C-m
 
   # Window 2: nvim edge
-  tmux new-window -n edge-code -t $SESSION_NAME
-  tmux send-keys -t $SESSION_NAME:2 "cd ${EDGE_PATH} && nvim ." C-m
+  tmux new-window -n bui-code -t $SESSION_NAME
+  tmux send-keys -t $SESSION_NAME:2 "cd ${BUI_PATH} && nvim ." C-m
 
   # Window 3: logs side-by-side
   tmux new-window -n logs -t $SESSION_NAME
   tmux send-keys -t $SESSION_NAME:3 "cd ${API_PATH} && bun run start:local" C-m
   tmux split-window -h -t $SESSION_NAME:3
-  tmux send-keys -t $SESSION_NAME:3.2 "cd ${EDGE_PATH} && bun run dev" C-m
+  tmux send-keys -t $SESSION_NAME:3.2 "cd ${BUI_PATH} && bun run dev" C-m
 
   # Window 4: terminal for git, misc
   tmux new-window -n terminal -t $SESSION_NAME
