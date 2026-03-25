@@ -270,7 +270,11 @@ echo "  MANUAL STEPS"
 echo "------------------------------------------------------------"
 echo ""
 echo "  Browser CLI: npm install -g agent-browser && agent-browser install"
-echo "  Figma MCP:   claude plugin install figma@claude-plugins-official"
+
+echo " add: claude mcp add --transport http figma-remote-mcp https://mcp.figma.com/mcp -s user "
+echo " add: claude mcp add --transport http notion https://mcp.notion.com/mcp -s user"
+echo " add: claude mcp add --transport http linear https://mcp.linear.app/mcp -s user"
+
 echo "  TS lint:     npm install -g @juanpprieto/claude-lsp"
 echo ""
 echo "  Built-in:    /simplify  /review"
