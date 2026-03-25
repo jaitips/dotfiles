@@ -1,0 +1,5 @@
+# SSH keys - never commit
+id_*
+!*.pub
+known_hosts
+known_hosts.old
