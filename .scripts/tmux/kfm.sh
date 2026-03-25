@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Name of the tmux session
-SESSION_NAME="api"
+SESSION_NAME="kfm"
 
 # Check if the session already exists
 tmux has-session -t $SESSION_NAME 2>/dev/null
@@ -11,7 +11,7 @@ if [ $? != 0 ]; then
   # Create a new session with a window called 'nvim'
   tmux new-session -s $SESSION_NAME -n nvim -d
 
-  REPO_PATH="$HOME/workplace/gitrepo/KeySpace-API"
+  REPO_PATH="$HOME/workplace/gitrepo/KeyspaceFrontendMobile/"
 
   # Start nvim in the first window (now index 1)
   tmux send-keys -t $SESSION_NAME:1 "cd ${REPO_PATH} && nvim ." C-m
@@ -20,7 +20,7 @@ if [ $? != 0 ]; then
   tmux new-window -n terminal -t $SESSION_NAME
 
   # Navigate to your backend directory and start server
-  tmux send-keys -t $SESSION_NAME:2 "cd ${REPO_PATH}; bun run start:local" C-m
+  tmux send-keys -t $SESSION_NAME:2 "cd ${REPO_PATH}; bun run dev" C-m
 
   # Select the first window (now index 1)
   tmux select-window -t $SESSION_NAME:1

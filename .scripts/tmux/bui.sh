@@ -20,7 +20,7 @@ if [ $? != 0 ]; then
   tmux new-window -n terminal -t $SESSION_NAME
 
   # Navigate to your backend directory and start server
-  tmux send-keys -t $SESSION_NAME:2 "cd ${REPO_PATH}; bun run dev" C-m
+  tmux send-keys -t $SESSION_NAME:2 "cd ${REPO_PATH}; bun run dev --host" C-m
 
   # Select the first window (now index 1)
   tmux select-window -t $SESSION_NAME:1

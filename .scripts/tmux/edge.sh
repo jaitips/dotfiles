@@ -22,7 +22,8 @@ if [ $? != 0 ]; then
   # Navigate to your backend directory and start server
   tmux send-keys -t $SESSION_NAME:2 "cd ${REPO_PATH}; bun run dev" C-m
 
-  # Navigate to your backend directory and start server
+  # Create a third window for general command line (will be index 3)
+  tmux new-window -n terminal2 -t $SESSION_NAME
   tmux send-keys -t $SESSION_NAME:3 "cd ${REPO_PATH};"
 
   # Select the first window (now index 1)
