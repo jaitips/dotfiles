@@ -180,7 +180,8 @@ install_repo "currents-dev/playwright-best-practices-skill" \
 
 echo -e "${BLUE}--- [11/11] Debugging & Planning ---${NC}"
 install_repo "obra/superpowers" \
-  systematic-debugging
+  systematic-debugging \
+  using-git-worktrees
 
 install_repo "OthmanAdi/planning-with-files" \
   planning-with-files

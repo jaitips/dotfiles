@@ -4,6 +4,13 @@
 
 set -euo pipefail
 
+# Check for root/sudo privileges
+if [[ $EUID -ne 0 ]]; then
+    echo -e "\033[31mError: This script must be run with sudo.\033[0m"
+    echo -e "\033[31mUsage: sudo $0\033[0m"
+    exit 1
+fi
+
 # Function to display colored output
 print_color() {
     echo -e "\033[32m$1\033[0m"
